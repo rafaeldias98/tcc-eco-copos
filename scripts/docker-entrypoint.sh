@@ -1,6 +1,4 @@
 #!/bin/bash
-./scripts/wait-for-it.sh storage:3306
-
 python3 manage.py makemigrations
 python3 manage.py migrate
 
