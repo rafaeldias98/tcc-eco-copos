@@ -1,0 +1,59 @@
+<!-- ./tcc_eco_copos/templates/product_rating.html -->
+
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="form-label" for="posted_by">Nome</label>
+            <input class="form-input" type="text" minlength="4" name="posted_by" id="posted_by" required
+                placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="name">Email</label>
+            <input class="form-input" type="email" name="user_email" id="user_email" required placeholder="Seu email">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="user_rating">
+                Avaliação
+                <img src="/static/img/star.png" alt="Avaliação">
+            </label>
+            <label class="form-radio form-inline">
+                <input type="radio" name="user_rating" value="1">
+                <i class="form-icon"></i>
+                1
+            </label>
+            <label class="form-radio form-inline">
+                <input type="radio" name="user_rating" value="2">
+                <i class="form-icon"></i>
+                2
+            </label>
+            <label class="form-radio form-inline">
+                <input type="radio" name="user_rating" value="3" checked>
+                <i class="form-icon"></i>
+                3
+            </label>
+            <label class="form-radio form-inline">
+                <input type="radio" name="user_rating" value="4">
+                <i class="form-icon"></i>
+                4
+            </label>
+            <label class="form-radio form-inline">
+                <input type="radio" name="user_rating" value="5">
+                <i class="form-icon"></i>
+                5
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="user_comment">Comentário</label>
+            <textarea class="form-input" minlength="6" name="user_comment" id="user_comment" placeholder="Seu comentário" rows="3"></textarea>
+        </div>
+
+        <button class="btn" type="submit">Enviar avaliação</button>
+    </form>
+{% endblock %}

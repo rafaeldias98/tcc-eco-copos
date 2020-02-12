@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'star_ratings',
 
     'django.contrib.admin',
     'django.contrib.auth',

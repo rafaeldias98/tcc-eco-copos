@@ -1,7 +1,7 @@
 {% load static wagtailuserbar %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="pt-BR">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -23,12 +23,57 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+
+        <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+        <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+        {% load  static  wagtailsettings_tags %}
+        {% get_settings %}
+
+        {# Global stylesheets #}
+
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+        {# Snipcart #}
+
+        {% if settings.home.SnipcartSettings.api_key %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+            <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="{{ settings.home.SnipcartSettings.api_key }}"></script>
+            <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
+        {% endif %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        {% block content %}{% endblock %}
+        {% block menu %}
+            <div class="container grid-xl">
+                <header class="navbar mt-2">
+                    <section class="navbar-section">
+                        <a href="/" class="navbar-brand text-bold text-uppercase mr-2">Eco Copos</a>
+                        <a href="/produtos" class="btn btn-link">Produtos</a>
+                        <a href="/sobre-nos" class="btn btn-link">Sobre Nós</a>
+                    </section>
+
+                    <!-- Snipcart summary and View cart button -->
+                    <section class="navbar-section snipcart-summary">
+                        <div class="input-group input-line">
+                            <a href="" class="btn btn-primary snipcart-checkout">
+                                <i class="icon icon-apps"></i>
+                                Ver carrinho (<span class="snipcart-total-items">0</span>)
+                            </a>
+                        </div>
+                    </section>
+                </header>
+                <div class="divider"></div>
+            </div>
+        {% endblock %}
+
+        <div class="container grid-xl mt-2">
+            {% block content %}{% endblock %}
+        </div>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/tcc_eco_copos.js' %}"></script>

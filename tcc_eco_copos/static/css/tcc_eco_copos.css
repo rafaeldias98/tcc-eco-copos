@@ -1,0 +1,31 @@
+.card-limited {
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 220px;
+
+}
+
+.card-centered-image {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.avatar {
+    background: #FFF !important;
+}
+
+.product-frame {
+    border: none;
+    height: 400px;
+    width: 100%;
+}
+
+.modal-body {
+    overflow-y: hidden !important;
+}
+
+.tile-title {
+    margin-bottom: 0px !important;
+}

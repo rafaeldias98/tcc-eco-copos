@@ -1,0 +1,67 @@
+<!-- /.home/templates/home/home_template.html -->
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+    <h1>
+        Bem vindo à Eco Copos!
+    </h1>
+
+    {% if products|length > 0 %}
+        <div class="filter">
+            <input type="radio" id="tag-0" class="filter-tag" name="filter-radio" hidden checked>
+            {% for c in category_infos %}
+                {% with category_infos|get_item:c as category %}
+                    <input type="radio" id="tag-{{ category.filter_key }}" class="filter-tag" name="filter-radio" hidden>
+                {% endwith %}
+            {% endfor %}
+
+            <div class="filter-nav">
+                <h5>Exibir:</h5>
+                <label class="chip text-capitalize c-hand" for="tag-0" data-chip="{{ category_count }}">
+                    Todos
+                    ({{ category_count }})
+                </label>
+
+                {% for c in category_infos %}
+                    {% with category_infos|get_item:c as category %}
+                        <label class="chip text-capitalize c-hand" for="tag-{{ category.filter_key }}">
+                            {{ c }}
+                            ({{ category.count }})
+                        </label>
+                    {% endwith %}
+                {% endfor %}
+
+            </div>
+        {% endif %}
+
+        <div class="filter-body">
+            {% for product in products %}
+                {% with category_infos|get_item:product.category as category %}
+                    <div class="filter-item card card-limited mb-2 p-centered" data-tag="tag-{{ category.filter_key }}">
+                        <div class="card-image card-centered-image">
+                            {% image product.image max-145x145 as tmp_image %}
+                            <img src="{{ tmp_image.url }}" alt="" class="img-responsive">
+                        </div>
+                        <div class="card-header">
+                            <div class="card-title h5">
+                                <p class="mb-1">{{ product.title }}</p>
+                                <a href="{{ product.get_url }}" class="btn btn-primary">
+                                    <i class="icon icon-plus"></i>
+                                    Ver mais
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-1">{{ product.short_description|truncatewords:100 }}</p>
+                            <span class="chip">{{ product.category }}</span>
+                        </div>
+                    </div>
+                {% endwith %}
+            {% empty %}
+                    <p>Não existem produtos cadastrados.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

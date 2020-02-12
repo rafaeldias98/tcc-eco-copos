@@ -1,0 +1,167 @@
+<!-- ./home/templates/home/product.html -->
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+{% load ratings %}
+
+{% block content %}
+<div class="container grid-lg">
+    <div class="columns">
+        <div class="column col-6 col-md-12">
+            {% image page.image max-500x500 as temp_image %}
+            <img src="{{ temp_image.url }}" alt="" />
+        </div>
+        <div class="column col-6 col-md-12">
+            <h1>
+                {{ page.title }}
+            </h1>
+
+            <p>
+                {{ page.short_description }}
+            </p>
+
+            <h4 class="text-bold">
+                R$ {{ page.price }}
+            </h4>
+
+            <p>
+                {% for f in custom_fields %}
+                {% if f.options_array|length > 0 %}
+                <div class="form-group">
+                    <label class="form-label" for="{{ f.name|lower }}">
+                        {{ f.name }}
+                    </label>
+                    <select class="form-select custom-field-select" id="{{ f.name|lower }}"
+                        data-field="{{ forloop.counter }}">
+                        {% for opt in f.options_array %}
+                        <option>
+                            {{ opt }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </p>
+
+            <button class="snipcart-add-item btn btn-primary" data-item-name="{{ page.title }}"
+                data-item-id="{{ page.product_id }}" data-item-url="{{ page.get_full_url }}" data-item-price="{{ page.price }}"
+                data-item-description="{{ page.short_description}}" data-item-image="{{ temp_image.url }}"
+                {% for f in custom_fields %} data-item-custom{{forloop.counter}}-name="{{f.name}}"
+                data-item-custom{{forloop.counter}}-options="{{f.options}}" {% endfor %}>
+                <i class="icon icon-check"></i>
+                Adicionar no Carrinho
+            </button>
+        </div>
+
+        <p class="mt-2">&nbsp;</p>
+
+        <div class="column col-12">
+            <h4>
+                Perguntas
+            </h4>
+
+            {% for question in questions %}
+                <div class="tile">
+                    <div class="tile-icon">
+                        <figure class="avatar avatar-lg"><img src="/static/img/default-avatar.png" alt="Avatar"></figure>
+                    </div>
+                    <div class="tile-content">
+                        <kbd>{{ question.posted_by }}</kbd>
+                        <p class="tile-subtitle">{{ question.user_question }}</p>
+                        {% if question.site_response %}
+                            <mark>Resposta do Site:</mark> {{ question.site_response }}
+                        {% endif %}
+                    </div>
+                    <div class="tile-action">
+                    </div>
+                </div>
+                <div class="divider"></div>
+            {% empty %}
+                <p>Não existem perguntas para este produto.</p>
+            {% endfor %}
+
+            <a class="btn btn-primary" href="#modal-question">
+                <i class="icon icon-message"></i>
+                Fazer pergunta
+            </a>
+            <div class="modal" id="modal-question">
+                <a href="#close" class="modal-overlay" aria-label="Close"></a>
+                <div class="modal-container">
+                    <div class="modal-header">
+                        <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
+                        <div class="modal-title h5">Pergunte sobre o produto!</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="content">
+                            <iframe id="question-frame" class="product-frame" src="/product/{{ page.product_id }}/question/"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-2">&nbsp;</p>
+
+        <div class="column col-12 mt-2">
+            <h4>
+                Avaliações
+            </h4>
+
+            {% for rating in ratings %}
+                <div class="tile">
+                    <div class="tile-icon">
+                        <figure class="avatar avatar-lg"><img src="/static/img/default-avatar.png" alt="Avatar"></figure>
+                    </div>
+                    <div class="tile-content">
+                        <kbd>{{ rating.posted_by }}</kbd>
+                        <p class="tile-subtitle">
+                            {% for rating in rating.user_rating|make_range %}
+                                <img src="/static/img/star.png" alt="Avaliação">
+                            {% endfor %}
+                            - {{ rating.user_comment }}
+                        </p>
+                    </div>
+                    <div class="tile-action">
+                    </div>
+                </div>
+                <div class="divider"></div>
+            {% empty %}
+                <p>Não existem avaliações para este produto.</p>
+            {% endfor %}
+
+            <a class="btn btn-primary" href="#modal-rating">
+                <i class="icon icon-emoji"></i>
+                Fazer avaliação
+            </a>
+            <div class="modal" id="modal-rating">
+                <a href="#close" class="modal-overlay" aria-label="Close"></a>
+                <div class="modal-container">
+                    <div class="modal-header">
+                        <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
+                        <div class="modal-title h5">Avalie o produto!</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="content">
+                            <iframe id="rating-frame" class="product-frame" src="/product/{{ page.product_id }}/rating/"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<p class="mt-2">&nbsp;</p>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.custom-field-select').onchange = function (event) {
+            if (event.target.dataset.field) {
+                document.querySelector('.snipcart-add-item').dataset['itemCustom' + event.target.dataset.field + 'Value'] = event.target.value;
+            }
+        };
+    }, false);
+
+</script>
+{% endblock %}
