@@ -14,7 +14,7 @@ class ProductList(Page):
     def get_context(self, request):
         context = super().get_context(request)
 
-        context['products'] = ProductDetail.objects.child_of(self).live()
+        context['products'] = ProductDetail.objects.all()
 
         category_infos = {}
         filter_key = 1
