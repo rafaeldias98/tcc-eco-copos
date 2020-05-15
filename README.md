@@ -1,5 +1,4 @@
 @TODO: Readme
 
-@TODO: Welcome page
-
-@TODO: About us page
+@TODO: Security:
+https://django-simple-captcha.readthedocs.io/en/latest/usage.html#installation

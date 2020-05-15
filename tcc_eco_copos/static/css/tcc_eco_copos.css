@@ -1,8 +1,11 @@
-.card-limited {
-    max-width: 400px;
-    min-width: 400px;
-    min-height: 220px;
+.timeline-margin {
+    margin: 12px 40px !important;
+}
 
+.card-limited {
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 220px;
 }
 
 .card-centered-image {
@@ -22,8 +25,12 @@
     width: 100%;
 }
 
-.modal-body {
-    overflow-y: hidden !important;
+.modal-container-custom {
+    min-height: 500px !important;
+}
+
+.modal-header-custom {
+    margin-top: 8px;
 }
 
 .tile-title {

@@ -14,6 +14,7 @@
                 {% endwith %}
             {% endblock %}
         </title>
+        <link rel="icon" href="/static/img/favicon.png" type="image/png">
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -52,9 +53,16 @@
             <div class="container grid-xl">
                 <header class="navbar mt-2">
                     <section class="navbar-section">
-                        <a href="/" class="navbar-brand text-bold text-uppercase mr-2">Eco Copos</a>
-                        <a href="/products" class="btn btn-link">Produtos</a>
-                        <a href="/about-us" class="btn btn-link">Sobre Nós</a>
+                        <a href="/products/" class="navbar-brand text-bold text-uppercase mr-2">Eco Copos</a>
+
+                        <ul class="tab tab-block">
+                            <li class="tab-item {% block p1_active %}{% endblock %}">
+                                <a href="/products/" class="btn btn-link">Produtos</a>
+                            </li>
+                            <li class="tab-item {% block p2_active %}{% endblock %}">
+                                <a href="/about-us/" class="btn btn-link">Sobre Nós</a>
+                            </li>
+                        </ul>
                     </section>
 
                     <!-- Snipcart summary and View cart button -->
@@ -62,7 +70,7 @@
                         <div class="input-group input-line">
                             <a href="" class="btn btn-primary snipcart-checkout">
                                 <i class="icon icon-apps"></i>
-                                Ver carrinho (<span class="snipcart-total-items">0</span>)
+                                Carrinho (<span class="snipcart-total-items">0</span>)
                             </a>
                         </div>
                     </section>
@@ -71,7 +79,7 @@
             </div>
         {% endblock %}
 
-        <div class="container grid-xl mt-2">
+        <div class="container grid-lg">
             {% block content %}{% endblock %}
         </div>
 

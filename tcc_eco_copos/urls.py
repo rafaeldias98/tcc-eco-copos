@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -24,6 +25,8 @@ urlpatterns = [
     url(r'^product/(?P<identifier>\d+)/question/$', views.CreateProductQuestionView.as_view(), name='post_question'),
 
     url(r'^product/(?P<identifier>\d+)/rating/$', views.CreateProductRatingView.as_view(), name='post_rating'),
+
+    url(r'^about-us/', TemplateView.as_view(template_name="about-us.html"), name='about_us'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

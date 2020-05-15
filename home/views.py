@@ -20,7 +20,7 @@ class CreateProductQuestionView(CreateView):
             question_obj.product = related_product
             question_obj.save()
 
-            return http.HttpResponse("Pergunta salvo com sucesso!", status=200)
+            return http.HttpResponse("Pergunta salva com sucesso!", status=200)
         else:
             return http.HttpResponse(
                 "Erro ao salvar pergunta: {}".format(question_form.errors),
