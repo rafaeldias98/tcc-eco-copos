@@ -18,11 +18,9 @@
 
 ## Pre-requisites
 
-`docker version 17+` See how to download and install in [Docker site.][3]
+`docker version 17+` See how to download and install in [Docker site.][1]
 
-`docker-compose version 1.20+` See how to download and install in [Docker site.][4]
-
-Basically the project uses [`pypy3`][1] to run and the dependencies are set using [`pip`][2].
+`docker-compose version 1.20+` See how to download and install in [Docker Compose site.][2]
 
 ---
 
@@ -70,3 +68,6 @@ docker-compose up
 - [x] README
 - [x] Security:
 https://django-simple-captcha.readthedocs.io/en/latest/usage.html#installation
+
+[1]: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+[2]: https://docs.docker.com/compose/install/#install-compose
