@@ -88,6 +88,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tcc_eco_copos.wsgi.application'
 
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Ldq9fcUAAAAAEo04jambr-w2BYcGvDp9fIJlzEz'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

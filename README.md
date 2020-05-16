@@ -67,5 +67,6 @@ docker-compose up
 | development | http://localhost/admin/                |
 
 ## Todo List
-- Security:
+- [x] README
+- [x] Security:
 https://django-simple-captcha.readthedocs.io/en/latest/usage.html#installation
