@@ -66,8 +66,7 @@ docker-compose up
 
 ## Todo List
 - [x] README
-- [x] Security:
-https://django-simple-captcha.readthedocs.io/en/latest/usage.html#installation
+- [x] Security
 
 [1]: https://docs.docker.com/install/linux/docker-ce/ubuntu/
 [2]: https://docs.docker.com/compose/install/#install-compose
