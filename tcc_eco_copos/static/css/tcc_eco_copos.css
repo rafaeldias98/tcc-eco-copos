@@ -44,3 +44,25 @@
 cite {
     font-size: medium;
 }
+
+.welcome-title {
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 400px) {
+    .welcome-title {
+        font-size: x-large !important;
+    }
+}
+
+@media only screen and (max-width: 301px) {
+    .cart {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 210px) {
+    .logo {
+        display: none;
+    }
+}
