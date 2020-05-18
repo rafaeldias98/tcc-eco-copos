@@ -34,7 +34,7 @@ class ProductList(Page):
                 category_infos[product.category]['count'] += 1
 
         context['category_infos'] = category_infos
-        context['category_count'] = sum(value.get('count') for _, value in category_infos.items())
+        context['general_category_count'] = sum(value.get('count') for _, value in category_infos.items())
 
         return context
 

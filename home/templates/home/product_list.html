@@ -55,8 +55,8 @@
 
             <div class="filter-nav">
                 <h5>Exibir:</h5>
-                <label class="chip text-capitalize c-hand" for="tag-0" data-chip="{{ category_count }}">
-                    Todos ({{ category_count }})
+                <label class="chip text-capitalize c-hand" for="tag-0" data-chip="{{ general_category_count }}">
+                    Todos ({{ general_category_count }})
                 </label>
 
                 {% for c in category_infos %}
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="mb-1">{{ product.short_description|truncatewords:100 }}</p>
+                            <p class="mb-1">{{ product.short_description|truncatewords:6 }}</p>
                         </div>
                     </div>
                 </a>
