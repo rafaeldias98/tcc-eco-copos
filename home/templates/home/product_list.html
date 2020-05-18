@@ -83,7 +83,9 @@
                         <div class="card-header">
                             <div class="card-title h5">
                                 <kbd class="mb-1">{{ product.title }}</kbd>
-                                <p>R$ {{ product.price }}</p>
+                                <p class="product-price">R$ {{ product.price }}</p>
+                                <cite class="text-dark">{{ product.size }}</cite>
+                                <br>
                                 <a href="{{ product.get_url }}" class="btn btn-primary">
                                     <i class="icon icon-plus"></i>
                                     Ver mais

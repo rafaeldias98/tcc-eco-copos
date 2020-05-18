@@ -36,3 +36,11 @@
 .tile-title {
     margin-bottom: 0px !important;
 }
+
+.product-price {
+    margin: 0 0 -8px !important;
+}
+
+cite {
+    font-size: medium;
+}

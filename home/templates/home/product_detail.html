@@ -21,25 +21,27 @@
 
             <h4 class="text-bold">
                 R$ {{ page.price }}
+                <br>
+                <cite class="text-dark">{{ page.size }}</cite>
             </h4>
 
             <p>
                 {% for f in custom_fields %}
-                {% if f.options_array|length > 0 %}
-                <div class="form-group">
-                    <label class="form-label" for="{{ f.name|lower }}">
-                        {{ f.name }}
-                    </label>
-                    <select class="form-select custom-field-select" id="{{ f.name|lower }}"
-                        data-field="{{ forloop.counter }}">
-                        {% for opt in f.options_array %}
-                        <option>
-                            {{ opt }}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </div>
-                {% endif %}
+                    {% if f.options_array|length > 0 %}
+                        <div class="form-group">
+                            <label class="form-label" for="{{ f.name|lower }}">
+                                {{ f.name }}
+                            </label>
+                            <select class="form-select custom-field-select" id="{{ f.name|lower }}"
+                                data-field="{{ forloop.counter }}">
+                                {% for opt in f.options_array %}
+                                    <option>
+                                        {{ opt }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </p>
 
