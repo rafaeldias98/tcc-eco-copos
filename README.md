@@ -64,16 +64,6 @@ docker-compose up
 |-------------|-------------------------------------------|
 | development | http://localhost/admin/                |
 
-## Todo List
-- [x] README
-- [x] Security
-- [x] Add message for big purchases
-- [x] Cup size
-- [x] Fix unique email BUG from question/rating models (Not is a BUG)
-- [x] Improve responsivity
-- [] Improve question/rating send form feedback
-- [] Add customizable cup
-
 
 [1]: https://docs.docker.com/install/linux/docker-ce/ubuntu/
 [2]: https://docs.docker.com/compose/install/#install-compose
