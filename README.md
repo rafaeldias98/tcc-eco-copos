@@ -11,7 +11,7 @@
 
 ---
 
-## Development
+## Developer
 - Rafael Dias da Silva
 
 ---
